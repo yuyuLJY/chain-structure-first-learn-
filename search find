@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    printf("Hello world!\n");
+    return 0;
+}
+
+//初始化
+list MakeEmpty()
+{
+list ptrl;
+ptrl = (list)malloc(sizeof(struct LNode));//申请空间
+ptrl->last=-1;
+return ptrl;
+}
+
+//查找
+int find(ElementType x,list ptrl)
+{
+    int i=0;
+    while(i <= ptrl->last && ptrl->data[i]!=x)
+        i++;
+    if(i > ptrl->last) return -1;//没有找到，返回-1
+    else return i;//找到X，返回存储的位置
+}
+
+//插入（在第i个的位置插入）
+void insert(ElementType x,int i,list ptrl)
+{
+    if(ptrl->lsat == maxsize-1){
+        printf("装满");
+        return;
+    }
+    if(i<1 || i>ptrl->last+2){
+        printf("位置不合法");
+        return;
+    }
+    for(j=ptrl->last;j>=i-1;j--)
+    prtl->data[j+1] = ptrl->data[j];//把元素一个一个向后一
+    ptrl->data[i-1]=x;
+    ptrl->last++;
+    return;
+}
+
+//删除（在第i个的位置删除）
+void delete(int i,list ptrl)
+{
+    int j;
+    if(i<1 || i<ptrl->last+1){ //检查删除的位置是否合理
+        printf("不存在%d个元素",i);
+        return;
+    }
+    for(j=i-1;j<=ptrl->last;j++){
+        ptrl->data[j]=ptrl->data[j+1];//后面的把前边的覆盖
+        ptrl->last--;//last指向最后的元素
+        return;
+    }
+}
+
+//用链表来实现求表长
+int length(list ptrl)
+{
+    int j=0;//p指向表的第一个结点
+    p=ptrl;
+    while(p){
+        p=ptrl->next;//p不停的指向下一个位置
+        j++;//当前p指向的是第i个结点
+    }
+    return j;
+}
+
+//用链表查找(按序号查找)
+int indkth(int k,last ptrl)
+{
+    list p=ptrl;
+    int i=1;
+    while( p!=null && i<k){
+        p=p->next;
+        i++;
+    }
+    if(i==k)return p;
+    else return null;
+}
+
+////用链表查找(按值查找)
+int find(ElementType x,list ptrl)
+{
+    last p=ptrl;//p设置为表头
+    while(p!=null && p->data!=x)
+        p=p->next;
+    if(p->data = x) return p;
+    else return null;
+}
+
+////用链表插入i位置,数值为x的值
+void insert(ElementType x,int i,list ptrl)
+{
+    list p,s;
+    if(i==1)
+    {
+        s=(list)malloc(sizeof(struct LNode));//给插入的位置申请一个空间
+        s->data=x;
+        s->next = ptrl;
+        return s;
+    }
+    p=findkth(i-1,ptrl);//返回的是
+    if(p==null){
+        ptintf("参数不合理");
+        return null;
+    }else{
+    s=(list)malloc(sizeof(struct LNode));
+    s->data=x;
+    s->next = p->next;
+    p->next=s;
+    return ptrl;
+    }
+}
+
+//删除（删除链表的第i个位置的结点）
