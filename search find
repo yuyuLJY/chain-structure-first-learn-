@@ -119,3 +119,29 @@ void insert(ElementType x,int i,list ptrl)
 }
 
 //删除（删除链表的第i个位置的结点）
+void select(){
+    list p,s;
+    if(i==1){
+    s=ptrl;//s指向第一个结点
+    if(ptrl!=null)//ptrl不是空的
+    ptrl=ptrl->next;//头结点挪到下一个位置
+    else
+    return null;
+    free(s);//释放空间
+    return ptrl;
+    }
+    p = findkth(i-1,ptrl);
+    //找到要删除的结点存不存在.如果存在，删除结点的前一个结点的位置在哪（i-1）
+    if(p==null){
+        printf("要寻找的第%d个节点不存在",i-1);
+        return null;
+    }else if(p->next ==null){
+        printf("第%d个节点不存在",i);
+        return null;
+    }else{
+    s=p->next;//s指向被删除的结点
+    p->next=s->next;//从链表中删除第i个结点，修改指针
+    free(s);//释放空间
+    return ptrl;
+    }
+}
