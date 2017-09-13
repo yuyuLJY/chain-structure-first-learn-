@@ -48,7 +48,7 @@ void insert(ElementType x,int i,list ptrl)
 void delete(int i,list ptrl)
 {
     int j;
-    if(i<1 || i<ptrl->last+1){ //检查删除的位置是否合理
+    if(i<1 || i>ptrl->last+1){ //检查删除的位置是否合理
         printf("不存在%d个元素",i);
         return;
     }
